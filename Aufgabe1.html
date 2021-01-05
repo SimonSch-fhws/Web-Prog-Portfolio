@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Portfolio Beispiel</title>
+    <style>
+      li {
+        margin-bottom: 5px;
+      }
+
+      li button {
+        font-size: 10px;
+        margin-left: 25px;
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+
+    <h1>Portfolio Shop Beispiel</h1>
+
+    <div>
+      <label for="item">Füge ein Gegenstand hinzu:</label>
+      <input type="text" name="item" id="item">
+      <button>hinzufügen</button>
+    </div>
+
+    <ul>
+
+    </ul>
+
+    <script>
+      const list = document.querySelector('ul');
+      const input = document.querySelector('input');
+      const button = document.querySelector('button');
+
+      button.onclick = function() {
+        let Gegenstand = input.value;
+        input.value = '';
+
+        const listItem = document.createElement('li');
+        const listText = document.createElement('span');
+        const listBtn = document.createElement('button');
+
+        listItem.appendChild(listText);
+        listText.textContent = Gegenstand;
+        listItem.appendChild(listBtn);
+        listBtn.textContent = 'Löschen';
+        list.appendChild(listItem);
+
+        listBtn.onclick = function(e) {
+          list.removeChild(listItem);
+        }
+
+        input.focus();
+      }
+    </script>
+  </body>
+</html>
